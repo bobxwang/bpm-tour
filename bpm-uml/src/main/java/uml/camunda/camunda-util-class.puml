@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.camunda.bpm.engine.impl {
+    note top of Condition: 可用于流程预测，传入变量看返回true/false
+    interface Condition
+    package el {
+        class UelExpressionCondition implements Condition
+        class ExpressionManager
+    }
+    package scripting {
+        class ScriptCondition implements Condition
+    }
+    package interceptor {
+        class CommandContext {
+                + getExecutionManager(): ExecutionManager
+                + getTaskManager(): TaskManager
+        }
+    }
+    package util {
+        class ClockUtil
+    }
+}
+
+@enduml

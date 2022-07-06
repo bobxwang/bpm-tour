@@ -1,0 +1,48 @@
+server:
+  port: ${port:8080}
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: 'GMT+8'
+  datasource:
+    url: jdbc:mysql://localhost:3306/camunda?characterEncoding=utf8&nullCatalogMeansCurrent=true&serverTimezone=GMT%2B8
+    hikari:
+      password: 1234!q@w#E$R
+      username: root
+
+swagger:
+  base-package: com.camunda.quick.controller
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    flowable:
+      enabled: true
+    health:
+      roles: access-admin
+      show-details: when_authorized
+  health:
+    ldap:
+      enabled: false
+
+camunda:
+  bpm:
+    application:
+      deploy-changed-only: true
+    admin-user:
+      id: demo
+      password: demo
+      firstName: Demo
+    filter:
+      create: All tasks
+    database:
+      type: mysql
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

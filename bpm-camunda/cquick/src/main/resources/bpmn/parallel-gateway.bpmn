@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.activiti.org/test" id="m1569319529879" name="" targetNamespace="http://www.activiti.org/test" exporter="Camunda Modeler" exporterVersion="4.2.0">
+    <process id="parallel-gateway" name="Student Leave Process5" processType="None" isClosed="false" isExecutable="true">
+        <startEvent id="_2" name="开始" />
+        <userTask id="_4" name="学生请假" camunda:assignee="张三" />
+        <parallelGateway id="_5" name="并行网关" />
+        <userTask id="_6" name="班长审批" camunda:assignee="李四,李四1,李四2">
+            <outgoing>Flow_0vgpjun</outgoing>
+        </userTask>
+        <userTask id="_7" name="班主任审批" camunda:assignee="王五" />
+        <sequenceFlow id="_8" sourceRef="_2" targetRef="_4" />
+        <sequenceFlow id="_9" sourceRef="_4" targetRef="_5" />
+        <sequenceFlow id="_10" sourceRef="_5" targetRef="_6" />
+        <sequenceFlow id="_11" sourceRef="_5" targetRef="_7" />
+        <parallelGateway id="_14" name="并行网关" />
+        <userTask id="_30" name="校长审批呀" camunda:assignee="赵六" />
+        <endEvent id="_16" name="结束" />
+        <sequenceFlow id="_17" sourceRef="_21" targetRef="_14" />
+        <sequenceFlow id="_18" sourceRef="_7" targetRef="_14" />
+        <sequenceFlow id="_19" sourceRef="_14" targetRef="_30" />
+        <sequenceFlow id="_20" sourceRef="_30" targetRef="_16" />
+        <sequenceFlow id="Flow_0vgpjun" sourceRef="_6" targetRef="_21" />
+        <userTask id="_21" name="能驳回" camunda:assignee="demo">
+            <incoming>Flow_0vgpjun</incoming>
+            <outgoing>_17</outgoing>
+        </userTask>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_studentLeaveProcess5">
+        <bpmndi:BPMNPlane id="BPMNPlane_studentLeaveProcess5" bpmnElement="parallel-gateway">
+            <bpmndi:BPMNEdge id="BPMNEdge__20" bpmnElement="_20">
+                <omgdi:waypoint x="972" y="184" />
+                <omgdi:waypoint x="1027" y="184" />
+                <omgdi:waypoint x="1027" y="183" />
+                <omgdi:waypoint x="1082" y="183" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__19" bpmnElement="_19">
+                <omgdi:waypoint x="799" y="184" />
+                <omgdi:waypoint x="844" y="184" />
+                <omgdi:waypoint x="844" y="187" />
+                <omgdi:waypoint x="887" y="187" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__18" bpmnElement="_18">
+                <omgdi:waypoint x="690" y="273" />
+                <omgdi:waypoint x="780" y="273" />
+                <omgdi:waypoint x="780" y="205" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__17" bpmnElement="_17">
+                <omgdi:waypoint x="740" y="90" />
+                <omgdi:waypoint x="780" y="90" />
+                <omgdi:waypoint x="780" y="165" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__11" bpmnElement="_11">
+                <omgdi:waypoint x="445" y="225" />
+                <omgdi:waypoint x="445" y="273" />
+                <omgdi:waypoint x="605" y="273" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__10" bpmnElement="_10">
+                <omgdi:waypoint x="445" y="185" />
+                <omgdi:waypoint x="445" y="80" />
+                <omgdi:waypoint x="470" y="80" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__9" bpmnElement="_9">
+                <omgdi:waypoint x="330" y="185" />
+                <omgdi:waypoint x="378" y="185" />
+                <omgdi:waypoint x="378" y="205" />
+                <omgdi:waypoint x="425" y="205" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="BPMNEdge__8" bpmnElement="_8">
+                <omgdi:waypoint x="147" y="218" />
+                <omgdi:waypoint x="183" y="218" />
+                <omgdi:waypoint x="183" y="181" />
+                <omgdi:waypoint x="245" y="181" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="Flow_0vgpjun_di" bpmnElement="Flow_0vgpjun">
+                <omgdi:waypoint x="562" y="80" />
+                <omgdi:waypoint x="606" y="80" />
+                <omgdi:waypoint x="606" y="90" />
+                <omgdi:waypoint x="640" y="90" />
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="BPMNShape__5" bpmnElement="_5">
+                <omgdc:Bounds x="425" y="185" width="40" height="40" />
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds x="475" y="198" width="44" height="14" />
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__7" bpmnElement="_7">
+                <omgdc:Bounds x="605" y="245" width="85" height="55" />
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__14" bpmnElement="_14">
+                <omgdc:Bounds x="760" y="165" width="40" height="40" />
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds x="706" y="178" width="44" height="14" />
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="Activity_0p80wsv_di" bpmnElement="_21">
+                <omgdc:Bounds x="640" y="50" width="100" height="80" />
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__6" bpmnElement="_6">
+                <omgdc:Bounds x="477" y="52" width="85" height="55" />
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__4" bpmnElement="_4">
+                <omgdc:Bounds x="245" y="157" width="85" height="55" />
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__2" bpmnElement="_2">
+                <omgdc:Bounds x="112" y="200" width="35" height="35" />
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds x="119" y="235" width="22" height="14" />
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__30" bpmnElement="_30">
+                <omgdc:Bounds x="887" y="157" width="85" height="55" />
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="BPMNShape__16" bpmnElement="_16">
+                <omgdc:Bounds x="1082" y="166" width="35" height="35" />
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds x="1089" y="201" width="22" height="14" />
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

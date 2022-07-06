@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.camunda.bpm.engine {
+    interface RepositoryService
+    interface RuntimeService
+    interface TaskService
+    interface ManagementService
+    interface HistoryService
+    interface IdentityService
+
+    package impl {
+        class ServiceImpl {
+            # CommandExecutor commandExecutor
+        }
+        note bottom of RepositoryServiceImpl: 流程仓库service，用于管理流程仓库，如部署、删除、读取流程资源
+        class RepositoryServiceImpl extends ServiceImpl implements RepositoryService
+
+        class RuntimeServiceImpl extends ServiceImpl implements RuntimeService
+
+        class TaskServiceImpl extends ServiceImpl implements TaskService
+        note bottom of HistoryServiceImpl: 历史service，可以查询所有历史数据，如流程实例、任务、活动、附件等
+
+        class HistoryServiceImpl extends ServiceImpl implements HistoryService
+
+        note bottom of IdentityServiceImpl: 身份service，可以管理和查询用户、组之间的关系
+        class IdentityServiceImpl extends ServiceImpl implements IdentityService
+
+        note top of ManagementServiceImpl: 引擎管理service，和具体业务无关，主要用于查询引擎配置、数据库、作业等
+        class ManagementServiceImpl extends ServiceImpl implements ManagementService
+    }
+}
+
+@enduml

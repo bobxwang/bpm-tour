@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.camunda.bpm.engine.impl.cfg {
+  interface ProcessEnginePlugin
+  abstract ProcessEngineConfiguration
+  abstract ProcessEngineConfigurationImpl
+  abstract SpringProcessEngineConfiguration
+  ProcessEngineConfiguration <|-- ProcessEngineConfigurationImpl
+  ProcessEngineConfigurationImpl <|-- SpringProcessEngineConfiguration
+}
+
+package org.camunda.bpm.application {
+  interface ProcessApplicationInterface
+  class AbstractProcessApplication
+}
+
+package org.camunda.bpm.engine.spring.application {
+  class SpringProcessApplication
+}
+
+package org.camunda.bpm.spring.boot.starter {
+  class SpringBootProcessApplication
+
+  package configuration {
+    class CamundaProcessEngineConfiguration
+    class CamundaDatasourceConfiguration
+    class CamundaHistoryConfiguration
+    class CamundaHistoryLevelAutoHandlingConfiguration
+    class CamundaJobConfiguration
+    class CamundaDeploymentConfiguration
+    class CamundaJpaConfiguration
+    class CamundaAuthorizationConfiguration
+    class CamundaFailedJobConfiguration
+    class CamundaMetricsConfiguration
+  }
+}
+
+@enduml

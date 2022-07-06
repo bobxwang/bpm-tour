@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.camunda.bpm.engine.impl.bpmn.behavior {
+    abstract class GatewayActivityBehavior
+    note top of ExclusiveGatewayActivityBehavior: 排它
+    class ExclusiveGatewayActivityBehavior extends GatewayActivityBehavior
+    note top of InclusiveGatewayActivityBehavior: 包容
+    class InclusiveGatewayActivityBehavior extends GatewayActivityBehavior
+    note top of ParallelGatewayActivityBehavior: 并行
+    class ParallelGatewayActivityBehavior extends GatewayActivityBehavior
+
+    abstract class MultiInstanceActivityBehavior
+    class ParallelMultiInstanceActivityBehavior extends MultiInstanceActivityBehavior
+    class SequentialMultiInstanceActivityBehavior extends MultiInstanceActivityBehavior
+
+}
+
+@enduml

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0deief9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.2.0">
+  <bpmn:process id="Process_rejectStart" name="Process_rejectStart" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="start" >
+      <bpmn:outgoing>Flow_07qsroh</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_07qsroh" sourceRef="StartEvent_1" targetRef="_1" />
+    <bpmn:sequenceFlow id="Flow_1yausjy" sourceRef="_1" targetRef="_2" />
+    <bpmn:sequenceFlow id="Flow_1nc5w3y" sourceRef="_2" targetRef="_3" />
+    <bpmn:sequenceFlow id="Flow_029gs7h" sourceRef="_3" targetRef="_4" />
+    <bpmn:endEvent id="Event_1euyj9e" name="End">
+      <bpmn:incoming>Flow_1dmyox2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1dmyox2" sourceRef="_4" targetRef="Event_1euyj9e" />
+
+    <bpmn:userTask id="_1" name="1"      >
+      <bpmn:incoming>Flow_07qsroh</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yausjy</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="_2" name="2" camunda:assignee="2">
+      <bpmn:incoming>Flow_1yausjy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nc5w3y</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="_3" name="3" camunda:assignee="3">
+      <bpmn:incoming>Flow_1nc5w3y</bpmn:incoming>
+      <bpmn:outgoing>Flow_029gs7h</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="_4" name="4" camunda:assignee="4">
+      <bpmn:incoming>Flow_029gs7h</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dmyox2</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_rejectStart">
+      <bpmndi:BPMNEdge id="Flow_1dmyox2_di" bpmnElement="Flow_1dmyox2">
+        <di:waypoint x="850" y="117" />
+        <di:waypoint x="912" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_029gs7h_di" bpmnElement="Flow_029gs7h">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="750" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nc5w3y_di" bpmnElement="Flow_1nc5w3y">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yausjy_di" bpmnElement="Flow_1yausjy">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07qsroh_di" bpmnElement="Flow_07qsroh">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="187" y="142" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1euyj9e_di" bpmnElement="Event_1euyj9e">
+        <dc:Bounds x="912" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="920" y="142" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gbkayl_di" bpmnElement="_1">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10lkm2e_di" bpmnElement="_2">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0y7lezx_di" bpmnElement="_3">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1m207kb_di" bpmnElement="_4">
+        <dc:Bounds x="750" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

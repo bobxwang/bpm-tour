@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package org.camunda.bpm.engine {
+    interface ProcessEngineServices {
+        + getRuntimeService()
+        + getTaskService()
+        + getXXXXService()
+    }
+    interface ProcessEngine extends ProcessEngineServices {
+        + getProcessEngineConfiguration()
+    }
+    abstract class ProcessEngineConfiguration
+    package impl {
+        class ProcessEngineImpl implements ProcessEngine {
+            ProcessEngineImpl(ProcessEngineConfigurationImpl)
+        }
+        package cfg {
+            abstract class ProcessEngineConfigurationImpl extends ProcessEngineConfiguration {
+                + buildProcessEngine():ProcessEngine
+                + getRuntimeService():RuntimeService
+                + getIdentityService():IdentityService
+            }
+        }
+        ProcessEngineImpl --> "1" ProcessEngineConfigurationImpl
+    }
+
+    package spring {
+        class SpringProcessEngineConfiguration extends ProcessEngineConfigurationImpl
+        class SpringProcessEngineServicesConfiguration implements ProcessEngineServices {
+            - processEngine:ProcessEngine
+        }
+        class ProcessEngineFactoryBean {
+            # processEngineConfiguration: ProcessEngineConfigurationImpl
+            # processEngine: ProcessEngineImpl
+            + getObject(): ProcessEngine
+        }
+    }
+}
+
+@enduml

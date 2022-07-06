@@ -1,0 +1,115 @@
+server:
+  port: ${port:8080}
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: 'GMT+8'
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/flowable?characterEncoding=utf8&nullCatalogMeansCurrent=true&serverTimezone=GMT%2B8
+    hikari:
+      password: xxx-xxx
+      username: xxx-xxx
+      driverClassName: com.mysql.jdbc.Driver
+  banner:
+    location: classpath:/org/flowable/spring/boot/flowable-banner.txt
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    flowable:
+      enabled: true
+    health:
+      roles: access-admin
+      show-details: when_authorized
+  health:
+    ldap:
+      enabled: false
+
+flowable:
+  rest:
+    app:
+      authentication-mode: verify-privilege
+  admin:
+    app:
+      security:
+        encryption:
+          credentials-i-v-spec: j8kdO2hejA9lKmm6
+          credentials-secret-spec: 9FGl73ngxcOoJvmL
+      server-config:
+        app:
+          context-root: ${spring.application.name}
+          password: test
+          server-address: http://localhost
+          user-name: admin
+          port: ${server.port}
+          rest-root: app-api
+          name: Flowable App app
+          description: Flowable App REST config
+          process:
+            context-root: ${spring.application.name}
+            server-address: http://localhost
+            password: test
+            user-name: admin
+            rest-root: process-api
+            port: ${server.port}
+            name: Flowable Process app
+            description: Flowable Process REST config
+          form:
+            context-root: ${spring.application.name}
+            server-address: http://localhost
+            password: test
+            user-name: admin
+            port: ${server.port}
+            rest-root: form-api
+            name: Flowable Form app
+            description: Flowable Form REST config
+          dmn:
+            context-root: ${spring.application.name}
+            server-address: http://localhost
+            password: test
+            user-name: admin
+            port: ${server.port}
+            rest-root: dmn-api
+            name: Flowable DMN app
+            description: Flowable DMN REST config
+          cmmn:
+            context-root: ${spring.application.name}
+            password: test
+            server-address: http://localhost
+            user-name: admin
+            port: ${server.port}
+            rest-root: cmmn-api
+            name: Flowable CMMN app
+            description: Flowable CMMN REST config
+          content:
+            context-root: ${spring.application.name}
+            server-address: http://localhost
+            password: test
+            user-name: admin
+            rest-root: content-api
+            port: ${server.port}
+            name: Flowable Content app
+            description: Flowable Content REST config
+  process:
+    servlet:
+      load-on-startup: 1
+  app:
+    servlet:
+      load-on-startup: 1
+  idm:
+    servlet:
+      load-on-startup: 1
+    app:
+      admin:
+        password: test
+        user-id: admin
+        first-name: admin
+        last-name: admin
+  modeler:
+    app:
+      rest-enabled: true
+  async-executor-activate: false
